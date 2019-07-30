@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import CharacterCard from './CharacterCard';
 import axios from 'axios';
+import CharacterCard from './CharacterCard';
 
 export default function CharacterList() {
+
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
@@ -13,15 +14,14 @@ export default function CharacterList() {
       console.log(data)
       setCharacters(data)
     })
+    .catch(err => console.log(err))
   }, [])
 
   return (
-  
     <section className='character-list grid-view'>
-
-      {Array.from(characters).map((character) => {
-       <CharacterCard character ={character} key={character.id} />
-      })}
+     {characters.map((character) => (
+     <CharacterCard key={character.id} character={character}/>))
+      }
     </section>
     );
 };

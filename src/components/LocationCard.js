@@ -1,7 +1,18 @@
 import React from 'react'
+import { Card, Icon } from 'semantic-ui-react'
 
-export default function LocationCard ({ name, type, dimension, residents }) {
-  // image={image}
-  return (<span>todo: location</span>
-  )
-}
+const description = [].join(' ')
+
+const LocationCard = ({ name, type, dimension, residents }) => (
+  <Card>
+    <Card.Content header={name} />
+    <Card.Content description={type} />
+    <Card.Content description={dimension} />
+    <Card.Content extra>
+      <Icon name='user' />
+      {residents} residents
+    </Card.Content>
+  </Card>
+)
+
+export default LocationCard;
